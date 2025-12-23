@@ -9,10 +9,13 @@
   status = 200
   force = true
 
-
 [[headers]]
   for = "/vless-xhttp/*"
   [headers.values]
     Cache-Control = "no-store, no-cache, must-revalidate, proxy-revalidate"
-    Connection = "keep-alive"
+    Connection = "Upgrade"
+    Upgrade = "websocket"
     Pragma = "no-cache"
+    X-Forwarded-For = "client-ip"
+    X-Forwarded-Proto = "https"
+    X-Real-IP = "client-ip"
