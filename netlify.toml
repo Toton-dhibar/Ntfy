@@ -16,6 +16,3 @@
     Connection = "Upgrade"
     Upgrade = "websocket"
     Pragma = "no-cache"
-    X-Forwarded-For = "client-ip"
-    X-Forwarded-Proto = "https"
-    X-Real-IP = "client-ip"
