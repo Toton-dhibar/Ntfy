@@ -5,7 +5,7 @@
 
 [[redirects]]
   from = "/vless-xhttp/*"
-  to = "https://ad.sdbuild.me/vless-xhttp/:splat"
+  to = "https://ad.sdbuild.me:443/vless-xhttp/:splat"
   status = 200
   force = true
 
