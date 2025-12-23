@@ -1,1 +1,16 @@
-hello
+[[redirects]]
+  from = "/vless-xhttp/*"
+  to = "https://52.140.66.231:443/vless-xhttp/:splat"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/vless-xhttp/*"
+  [headers.values]
+    Cache-Control = "no-store, no-cache, must-revalidate, proxy-revalidate"
+    Netlify-CDN-Cache-Control = "no-store"
+    Pragma = "no-cache"
+    Expires = "0"
+    Connection = "keep-alive"
+    Keep-Alive = "timeout=300, max=1000"
+    X-Accel-Buffering = "no"
