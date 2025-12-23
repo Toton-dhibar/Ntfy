@@ -1,0 +1,18 @@
+# ================================
+# Netlify CDN config for Xray VLESS SplitHTTP
+# Path: /vless-xhttp
+# ================================
+
+[[redirects]]
+  from = "/vless-xhttp/*"
+  to = "https://ad.sdbuild.me/vless-xhttp/:splat"
+  status = 200
+  force = true
+
+
+[[headers]]
+  for = "/vless-xhttp/*"
+  [headers.values]
+    Cache-Control = "no-store, no-cache, must-revalidate, proxy-revalidate"
+    Connection = "keep-alive"
+    Pragma = "no-cache"
