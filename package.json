@@ -1,0 +1,8 @@
+{
+  "name": "v2ray-proxy",
+  "version": "1.0.0",
+  "description": "V2Ray proxy for Netlify",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
