@@ -1,1 +1,13 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
 
+[[redirects]]
+  from = "/vless-xhttp/*"
+  to = "/.netlify/functions/proxy"
+  status = 200
+
+[[headers]]
+  for = "/vless-xhttp/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
