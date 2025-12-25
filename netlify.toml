@@ -1,12 +1,11 @@
 [build]
   publish = "public"
 
-[[redirects]]
-  from = "/vless-xhttp"
-  to = "http://ad.sdbuild.me/vless-xhttp"
-  status = 200
-  force = true
+# The /vless-xhttp route is handled by the Edge Function in netlify/edge-functions/xhttp.ts
+# This allows for dynamic backend configuration via the VLESS_BACKEND environment variable.
 
-  [redirects.headers]
-    Host = "ad.sdbuild.me"
-    X-Forwarded-Proto = "https"
+# Fallback or other redirects can go here
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

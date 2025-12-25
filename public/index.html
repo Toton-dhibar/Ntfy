@@ -1,1 +1,67 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLESS XHTTP CDN Gateway</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; background: #f4f4f4; color: #333; }
+        .container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1 { margin-top: 0; color: #008080; }
+        .config-box { background: #2d2d2d; color: #f8f8f2; padding: 1rem; border-radius: 4px; overflow-x: auto; margin: 1rem 0; font-family: monospace; }
+        button { background: #008080; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+        button:hover { background: #006666; }
+        .note { font-size: 0.9rem; color: #666; margin-top: 1rem; border-left: 3px solid #008080; padding-left: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>VLESS XHTTP CDN Gateway</h1>
+        <p>This Netlify site is configured as a CDN frontend for VLESS XHTTP tunneling.</p>
+        
+        <div id="config-area">
+            <h3>Client Configuration</h3>
+            <p>Use the following details to configure your V2Ray/Xray client:</p>
+            <ul>
+                <li><strong>Address:</strong> <span id="domain">...</span></li>
+                <li><strong>Port:</strong> 443 (HTTPS)</li>
+                <li><strong>Protocol:</strong> VLESS</li>
+                <li><strong>Transport:</strong> xhttp (or HTTP/2)</li>
+                <li><strong>Path:</strong> /vless-xhttp</li>
+            </ul>
+
+            <h3>VLESS Link (Example)</h3>
+            <div class="config-box" id="vless-link">Generating...</div>
+            <button onclick="copyConfig()">Copy Link</button>
+        </div>
+
+        <div class="note">
+            <p><strong>Note:</strong> You must replace the UUID below with your actual server UUID. The backend is configured via the <code>VLESS_BACKEND</code> environment variable.</p>
+        </div>
+    </div>
+
+    <script>
+        const domain = window.location.hostname;
+        document.getElementById('domain').textContent = domain;
+
+        // Example UUID - User must replace this
+        const uuid = "YOUR_UUID_HERE";
+        const path = "/vless-xhttp";
+        const encryption = "none";
+        const type = "xhttp"; // or http
+        const security = "tls";
+        
+        // Construct VLESS URI
+        // vless://uuid@host:443?encryption=none&security=tls&type=xhttp&host=host&path=%2Fvless-xhttp#Netlify-CDN
+        const vlessLink = `vless://${uuid}@${domain}:443?encryption=${encryption}&security=${security}&type=${type}&host=${domain}&path=${encodeURIComponent(path)}&sni=${domain}#Netlify-CDN`;
+        
+        document.getElementById('vless-link').textContent = vlessLink;
+
+        function copyConfig() {
+            navigator.clipboard.writeText(vlessLink).then(() => {
+                alert('Copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
