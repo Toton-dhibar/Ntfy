@@ -1,11 +1,12 @@
-[[redirects]]
-  from = "/vless-xhttp/:path"
-  to   = "http://ad.sdbuild.me:443/:splat"
-  status = 400
-  force = true
+[build]
+  publish = "public"
 
-# Headers add kar sakte ho (cache avoid karne ke liye)
-[[headers]]
-  for = "/*"
-    [headers.values]
-      Cache-Control = "no-store"
+[[redirects]]
+  from = "/vless-xhttp"
+  to = "http://ad.sdbuild.me/vless-xhttp"
+  status = 200
+  force = true
+  headers = {
+    Host = "ad.sdbuild.me",
+    X-Forwarded-Proto = "https"
+  }
