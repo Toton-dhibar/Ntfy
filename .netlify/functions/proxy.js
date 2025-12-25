@@ -4,7 +4,7 @@ export default async function handler(req) {
   try {
     // Target V2Ray server
     const TARGET_HOST = 'ad.sdbuild.me';
-    const TARGET_URL = `https://${TARGET_HOST}`;
+    const TARGET_URL = `http://${TARGET_HOST}`;
     
     // Get the full path from Netlify's event object
     // In Netlify Functions, req is an event object
