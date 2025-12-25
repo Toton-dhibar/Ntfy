@@ -1,13 +1,11 @@
-[build]
-  publish = "public"
-  functions = "netlify/functions"
-
 [[redirects]]
-  from = "/vless-xhttp/*"
-  to = "/.netlify/functions/proxy"
+  from = "/vless-xhttp/:splat"
+  to   = "https://ad.sdbuild.me:443/:splat"
   status = 400
+  force = true
 
+# Headers add kar sakte ho (cache avoid karne ke liye)
 [[headers]]
-  for = "/vless-xhttp/*"
-  [headers.values]
-    Cache-Control = "no-cache, no-store, must-revalidate"
+  for = "/*"
+    [headers.values]
+      Cache-Control = "no-store"
