@@ -6,7 +6,7 @@
   to = "http://ad.sdbuild.me/vless-xhttp"
   status = 200
   force = true
-  headers = {
-    Host = "ad.sdbuild.me",
+
+  [redirects.headers]
+    Host = "ad.sdbuild.me"
     X-Forwarded-Proto = "https"
-  }
