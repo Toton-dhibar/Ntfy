@@ -1,6 +1,6 @@
 [[redirects]]
-  from = "/vless-xhttp/:splat"
-  to   = "https://ad.sdbuild.me:443/:splat"
+  from = "/vless-xhttp/:path"
+  to   = "http://ad.sdbuild.me:443/:splat"
   status = 400
   force = true
 
