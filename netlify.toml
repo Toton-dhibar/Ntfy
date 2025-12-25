@@ -5,7 +5,7 @@
 [[redirects]]
   from = "/vless-xhttp/*"
   to = "/.netlify/functions/proxy"
-  status = 200
+  status = 400
 
 [[headers]]
   for = "/vless-xhttp/*"
