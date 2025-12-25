@@ -1,10 +1,29 @@
 [build]
   publish = "public"
 
-# The /vless-xhttp route is handled by the Edge Function in netlify/edge-functions/xhttp.ts
-# This allows for dynamic backend configuration via the VLESS_BACKEND environment variable.
+# Pure HTTP reverse proxy (CDN tunnel) for Xray xHTTP (xhttp) backend
+# Forwards all requests to /vless-xhttp directly to http://ad.sdbuild.me/vless-xhttp
+# 
+# How this works:
+# - status = 200 makes this a proxy/rewrite (not a redirect)
+# - Netlify automatically sets Host header to ad.sdbuild.me (from destination URL)
+# - Netlify automatically sets X-Forwarded-Proto to https (for HTTPS requests)
+# - NO WebSocket headers (Upgrade, Connection: upgrade) are used
+# - Pure HTTP proxy without protocol upgrades
+[[redirects]]
+  from = "/vless-xhttp"
+  to = "http://ad.sdbuild.me/vless-xhttp"
+  status = 200
+  force = true
 
-# Fallback or other redirects can go here
+# Custom response headers for the /vless-xhttp endpoint (optional)
+[[headers]]
+  for = "/vless-xhttp"
+
+[headers.values]
+  X-Content-Type-Options = "nosniff"
+
+# Fallback for other routes
 [[redirects]]
   from = "/*"
   to = "/index.html"
