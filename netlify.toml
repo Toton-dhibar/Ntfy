@@ -1,11 +1,11 @@
 [[redirects]]
-  from = "/*"
-  to = "https://52.140.66.231:443/:splat"
+  from = "/vless-xhttp*"
+  to = "https://52.140.66.231:8443/:splat"
   status = 200
   force = true
 
 [[headers]]
-  for = "/*"
+  for = "/vless-xhttp*"
   [headers.values]
     Cache-Control = "no-store"
     Netlify-CDN-Cache-Control = "no-store"
