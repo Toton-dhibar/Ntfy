@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/vless-xhttp/*"
-  to = "http://52.140.66.231:80/:splat"
+  to = "https://52.140.66.231:443/:splat"
   status = 200
   force = true
 
