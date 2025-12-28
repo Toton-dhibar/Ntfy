@@ -7,14 +7,14 @@
 
 # Main redirect rule - forwards all traffic to your VPS
 [[redirects]]
-  from = "/*"
-  to = "https://ad.sdbuild.me:443/vless-xhttp:splat"
+  from = "/vless-xhttp/*"
+  to = "https://ad.sdbuild.me:443/vless-xhttp/:splat"
   status = 200
   force = true
 
 # Headers for better compatibility
 [[headers]]
-  for = "/*"
+  for = "/vless-xhttp/*"
   [headers.values]
     # CORS headers
     Access-Control-Allow-Origin = "*"
