@@ -1,5 +1,53 @@
+# Netlify Configuration for VLESS XHTTP Proxy
+# Place this file in the root of your repository
+
+[build]
+  publish = "."
+  command = "echo 'No build required'"
+
+# Main redirect rule - forwards all traffic to your VPS
 [[redirects]]
-  from = "/vless-xhttp/*"
-  to = "https://52.140.66.231:443/vless-xhttp/:splat"
+  from = "/*"
+  to = "https://ad.sdbuild.me:443/vless-xhttp:splat"
   status = 200
   force = true
+
+# Headers for better compatibility
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # CORS headers
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+    Access-Control-Allow-Headers = "*"
+    
+    # Security headers
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "no-referrer"
+    
+    # Prevent caching for dynamic proxy content
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
+
+# Alternative configuration if the above doesn't work
+# Uncomment these and comment out the main redirect above
+
+# [[redirects]]
+#   from = "/vless-xhttp"
+#   to = "https://ad.sdbuild.me:443/vless-xhttp"
+#   status = 200
+#   force = true
+
+# [[redirects]]
+#   from = "/vless-xhttp/*"
+#   to = "https://ad.sdbuild.me:443/vless-xhttp/:splat"
+#   status = 200
+#   force = true
+
+# [[redirects]]
+#   from = "/*"
+#   to = "https://ad.sdbuild.me:443/:splat"
+#   status = 200
+#   force = true
