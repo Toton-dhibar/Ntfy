@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/*"
-  to = "https://ad.sdbuild.me:443/*:splat"
+  to = "https://52.140.66.231:443/vless-xhttp:splat"
   status = 200
   force = true
