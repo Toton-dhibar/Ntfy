@@ -1,1 +1,5 @@
-
+[[redirects]]
+  from = "/*"
+  to = "http://ad.sdbuild.me:443/*:splat"
+  status = 200
+  force = true
