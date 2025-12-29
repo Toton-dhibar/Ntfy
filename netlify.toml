@@ -8,7 +8,7 @@
 # Main redirect rule - forwards all traffic to your VPS
 [[redirects]]
   from = "/vless-xhttp/*"
-  to = "https://ad.sdbuild.me:443/vless-xhttp/:splat"
+  to = "https://ad.sdbuild.me:443/vless-xhttp"
   status = 200
   force = true
 
